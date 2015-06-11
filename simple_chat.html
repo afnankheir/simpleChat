@@ -1,0 +1,17 @@
+<head>
+  <title>simple_chat</title>
+</head>
+
+<body>
+	  <div class="container">
+    <ul>
+      {{#each msgs}}
+        {{> chat}}
+      {{/each}}
+    </ul>
+</div>
+</body>
+
+<template name="chat">
+  <li>{{text}}</li>
+</template>
