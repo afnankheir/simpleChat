@@ -4,14 +4,15 @@
 
 <body>
 	  <div class="container">
-	  	  <form class="new-msg">
-    <input type="text" name="text" />
-  </form>
     <ul>
       {{#each msgs}}
         {{> chat}}
       {{/each}}
     </ul>
+    	  	  <form class="new-msg">
+    <input type="text" name="text" />
+  </form>
+
 </div>
 </body>
 
