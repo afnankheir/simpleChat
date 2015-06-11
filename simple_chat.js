@@ -5,7 +5,8 @@ messeges=new Mongo.Collection("messeges");
   // This code only runs on the client
   Template.body.helpers({
     msgs: function () {
-      return messeges.find({});
+     
+     return messeges.find({});
     }
   });
 
@@ -27,8 +28,4 @@ messeges=new Mongo.Collection("messeges");
     return false;
   }
 });
-
-
-
 }
-
