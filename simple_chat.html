@@ -3,19 +3,25 @@
 </head>
 
 <body>
-	  <div class="container">
+    <div class="container">
+      {{> loginButtons}}
+
     <ul>
       {{#each msgs}}
         {{> chat}}
       {{/each}}
     </ul>
-    	  	  <form class="new-msg">
+    {{#if currentUser}}
+            <form class="new-msg">
     <input type="text" name="text" />
   </form>
+  {{/if}}
 
 </div>
 </body>
 
 <template name="chat">
-  <li>{{text}}</li>
+  <li>
+    <span class="text"><strong>{{username}}</strong> - {{text}} - {{createdAt}} </span>
+  </li>
 </template>

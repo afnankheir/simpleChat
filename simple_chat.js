@@ -18,7 +18,10 @@ messeges=new Mongo.Collection("messeges");
 
     messeges.insert({
       text: text,
-      createdAt: new Date() // current time
+      createdAt: new Date(),
+        owner: Meteor.userId(),           // _id of logged in user
+  username: Meteor.user().username  // username of logged in user
+
     });
 
     // Clear form
@@ -28,4 +31,8 @@ messeges=new Mongo.Collection("messeges");
     return false;
   }
 });
+Accounts.ui.config({
+  passwordSignupFields: "USERNAME_ONLY"
+});
+
 }
