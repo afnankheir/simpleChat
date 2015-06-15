@@ -1,12 +1,14 @@
 messeges=new Mongo.Collection("messeges");
 // simple-todos.js
 
-  if (Meteor.isClient) {
+
+if (Meteor.isClient) {
   // This code only runs on the client
+  Meteor.subscribe("msgs");
   Template.body.helpers({
-    msgs: function () {
+  msgs: function () {
      
-     return messeges.find({});
+    return messeges.find({});
     }
   });
 
@@ -30,9 +32,41 @@ messeges=new Mongo.Collection("messeges");
     // Prevent default form submit
     return false;
   }
-});
-Accounts.ui.config({
-  passwordSignupFields: "USERNAME_ONLY"
-});
+  });
+  
+  Templete.chat.helpers({
+      isOwner : function (){
+         return this.owner==Meteor.userId();
+      }
+  });
 
-}
+  Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+  });
+  Meteor.subscribe("msgs");
+  setPrivate: function (chatId, setToPrivate) {
+  var msg = messeges.findOne();
+  }
+
+
+});
+meteor.methods(
+  messeges.update(chatId, { $set: { private: setToPrivate } });
+  Meteor.publish("messeges", function () {
+  return Tasks.find({
+    $or: [
+      { private: {$ne: true} },
+      { owner: this.userId }
+    ]
+  });
+  );
+if (Meteor.isServer) {
+ Meteor.publish("msgs", function () {
+return Tasks.find({
+$or: [
+{ private: {$ne: true} },
+{ owner: this.userId }
+]
+});
+});
+}  
