@@ -5,6 +5,17 @@
 <body>
     <div class="container">
       {{> loginButtons}}
+  
+      {{#if isOwner}}
+        <button class="toggle-private">
+            {{#if private}}
+              Private
+            {{else}}
+              Public
+            {{/if}}
+        </button>
+      {{/if}}
+
 
     <ul>
       {{#each msgs}}
@@ -23,5 +34,6 @@
 <template name="chat">
   <li>
     <span class="text"><strong>{{username}}</strong> - {{text}} - {{createdAt}} </span>
+    {{#if private}}private{{/if}}
   </li>
 </template>
