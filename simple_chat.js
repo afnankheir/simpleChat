@@ -4,6 +4,10 @@ messeges=new Mongo.Collection("messeges");
      Meteor.subscribe("messeges");
 
   // This code only runs on the client
+  Template.registerHelper('formatDate', function(date) {
+  return moment(date).format('MM-DD-YYYY');
+});
+
   Template.body.helpers({
     msgs: function () {
      
@@ -21,10 +25,12 @@ people: function (){
     // This function is called when the new task form is submitted
 
     var text = event.target.text.value;
+    var date = new Date();
+    var datex= date.toLocaleDateString();
 
     messeges.insert({
       text: text,
-      createdAt: new Date(),
+      createdAt: datex,
         owner: Meteor.userId(),           // _id of logged in user
   username: Meteor.user().username  // username of logged in user
 
@@ -47,4 +53,5 @@ if (Meteor.isServer){
      return messeges.find();
    }
    );
+
   }

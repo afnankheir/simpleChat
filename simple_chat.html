@@ -3,12 +3,17 @@
 </head>
 
 <body>
-    <div class="container">
-      
+       <div class= "top"> 
         {{> loginButtons}}
-<div class= "chatarea">
+        </div>
+       <div class= "left">
 
-    
+        {{#each people}}
+         {{>show}}
+        {{/each}}
+    </div>
+
+<div class= "main">
      {{#if currentUser}}
            <ul>
           {{#each msgs}}
@@ -20,18 +25,10 @@
     </form>
      {{/if}}
 </div>
-      <div class= "sidebar">
-
-        {{#each people}}
-         {{>chat}}
-        {{/each}}
-    </div>
-
-      </div>
-    
 </body>
 
 <template name="chat">
+  
   <li>
     <span class="text"><strong>{{username}}</strong>- {{createdAt}} - {{text}}  </span>
 </li>

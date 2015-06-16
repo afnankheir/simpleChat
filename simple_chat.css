@@ -21,7 +21,7 @@ body {
   width: 600px;
   margin: auto;
   min-height: 100%;
-  background: gray;
+  background: green;
 }
 
 .chatarea {
@@ -137,5 +137,23 @@ header .hide-completed {
     padding-bottom: 5px;
   }
 }
+.top {
+    position:absolute;
+    left:0; right:0;
+    height: 92px;
+}
+.left {
+    position:absolute;
+    right:0; top:92px; bottom: 0;
+    width: 178px;
+    background-color: purple;
+}
+.main {
+    position: absolute;
+    right:300px; top:92px; left:0; bottom:0;
+    width: 600px;
+    margin: auto;
+    min-height: 100%;
+    background: gray;
 
-/* CSS declarations go here */
+}
