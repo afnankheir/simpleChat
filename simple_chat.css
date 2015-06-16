@@ -18,10 +18,23 @@ body {
 }
 
 .container {
-  max-width: 600px;
-  margin: 0 auto;
+  width: 600px;
+  margin: auto;
   min-height: 100%;
   background: grey;
+}
+
+.chatarea {
+  width: 100%;
+
+}
+
+.sidebar {
+    width: 30%;
+    background-color: red;
+    float: right;
+    padding: 0 1em;
+
 }
 
 header {
