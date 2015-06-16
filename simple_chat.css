@@ -21,7 +21,7 @@ body {
   width: 600px;
   margin: auto;
   min-height: 100%;
-  background: grey;
+  background: gray;
 }
 
 .chatarea {
@@ -31,7 +31,7 @@ body {
 
 .sidebar {
     width: 30%;
-    background-color: red;
+    background-color: gray;
     float: right;
     padding: 0 1em;
 
@@ -79,7 +79,7 @@ form {
 ul {
   margin: 0;
   padding: 0;
-  background: grey;
+  background: gray;
 }
 
 .delete {

@@ -1,6 +1,8 @@
-messeges=new Mongo.Collection("messeges");
-  
+messeges=new Mongo.Collection("messeges");  
+ 
   if (Meteor.isClient) {
+     Meteor.subscribe("messeges");
+
   // This code only runs on the client
   Template.body.helpers({
     msgs: function () {
@@ -41,6 +43,8 @@ Accounts.ui.config({
 
 }
 if (Meteor.isServer){
-
-  
-}
+   Meteor.publish("messeges",function(){
+     return messeges.find();
+   }
+   );
+  }
