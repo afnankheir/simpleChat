@@ -5,13 +5,11 @@ body {
   background-image: linear-gradient(to bottom, #660033, #918e82 100%);
   background-attachment: fixed;
 
-  position: absolute;
-  top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
 
   padding: 0;
+  padding-top: 10px
   margin: 0;
 
   font-size: 14px;
@@ -29,13 +27,7 @@ body {
 
 }
 
-.sidebar {
-    width: 30%;
-    background-color: gray;
-    float: right;
-    padding: 0 1em;
 
-}
 
 header {
   background: #d2edf4;
@@ -46,6 +38,8 @@ header {
 
 #login-buttons {
   display: block;
+    font-size: 1.5em;
+  float: right;
 }
 
 h1 {
@@ -138,12 +132,10 @@ header .hide-completed {
   }
 }
 .top {
-    position:absolute;
     left:0; right:0;
     height: 92px;
 }
 .left {
-    position:absolute;
     right:0; top:92px; bottom: 0;
     width: 178px;
     background-color: purple;
@@ -152,8 +144,21 @@ header .hide-completed {
     position: absolute;
     right:300px; top:92px; left:0; bottom:0;
     width: 600px;
-    margin: auto;
-    min-height: 100%;
+    margin-left: 300px;
+    height: 100%;
     background: gray;
 
+}
+
+div.header {
+  font-family: 'Allan', Helvetica, Arial, sans-serif;
+  font-size: 70px;
+  color: white;
+  margin-left: 250px;
+}
+
+a#login-sign-in-link{
+  font-size: 1.5em;
+  float: right;
+  padding-top: 0px
 }
