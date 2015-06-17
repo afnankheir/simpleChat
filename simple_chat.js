@@ -1,6 +1,8 @@
 messeges=new Mongo.Collection("messeges");  
  
   if (Meteor.isClient) {
+    
+     Meteor.subscribe("userData");
      Meteor.subscribe("messeges");
 
   // This code only runs on the client
@@ -9,12 +11,14 @@ messeges=new Mongo.Collection("messeges");
 });
 
   Template.body.helpers({
+
     msgs: function () {
      
      return messeges.find({});
     },
 
-people: function (){
+    chatUsers: function (){
+    //return userData.find({});
 
   return Meteor.users.find({});
 }
@@ -53,5 +57,10 @@ if (Meteor.isServer){
      return messeges.find();
    }
    );
+Meteor.publish("userData", function () {
+ 
+   return Meteor.users.find({});
+    // return Meteor.users.find({}, {fields: {'username': 1}});
+});
 
   }
