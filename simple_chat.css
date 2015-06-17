@@ -19,15 +19,12 @@ body {
   width: 600px;
   margin: auto;
   min-height: 100%;
-  background: green;
 }
 
 .chatarea {
   width: 100%;
 
 }
-
-
 
 header {
   background: #d2edf4;

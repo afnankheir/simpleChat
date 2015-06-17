@@ -7,7 +7,8 @@ messeges=new Mongo.Collection("messeges");
 
   // This code only runs on the client
   Template.registerHelper('formatDate', function(date) {
-  return moment(date).format('MM-DD-YYYY');
+  return moment(date).startOf('hour').fromNow();
+
 });
 
   Template.body.helpers({
@@ -30,11 +31,10 @@ messeges=new Mongo.Collection("messeges");
 
     var text = event.target.text.value;
     var date = new Date();
-    var datex= date.toLocaleDateString();
 
     messeges.insert({
       text: text,
-      createdAt: datex,
+      createdAt: date,
         owner: Meteor.userId(),           // _id of logged in user
   username: Meteor.user().username  // username of logged in user
 
@@ -60,7 +60,6 @@ if (Meteor.isServer){
 Meteor.publish("userData", function () {
  
    return Meteor.users.find({});
-    // return Meteor.users.find({}, {fields: {'username': 1}});
 });
 
   }
