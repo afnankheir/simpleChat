@@ -7,7 +7,7 @@ messeges=new Mongo.Collection("messeges");
 
   // This code only runs on the client
   Template.registerHelper('formatDate', function(date) {
-  return moment(date).startOf('hour').fromNow();
+  return moment(date).fromNow();
 
 });
 
@@ -30,7 +30,7 @@ messeges=new Mongo.Collection("messeges");
     // This function is called when the new task form is submitted
 
     var text = event.target.text.value;
-    var date = new Date();
+    var date = new Date;
 
     messeges.insert({
       text: text,
