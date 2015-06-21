@@ -1,8 +1,10 @@
-messeges=new Mongo.Collection("messeges");  
+messeges=new Mongo.Collection("messeges");
+typing= new Mongo.Collection ("typing");  
  
   if (Meteor.isClient) {
     
      Meteor.subscribe("userData");
+     Meteor.subscribe("typing")
      Meteor.subscribe("messeges");
 
   // This code only runs on the client
@@ -13,16 +15,34 @@ messeges=new Mongo.Collection("messeges");
 
     Template.body.helpers({
 
-      msgs: function () {
+    msgs: function () {
      return messeges.find({});
+    
     },
+
+    nowtyping: function(){
+      return typing.find({});
+    },
+
 
     chatUsers: function (){
     return Meteor.users.find({});}
     });
 
     Template.body.events({
+       
+     "focus .new-msg": function (event){
+      //boolean check if already exists
+      //remove from collection after submit 
+        usertyping = Meteor.user().username;
+        typeId= typing.insert ({name: usertyping});
+      },
+
+
+
      "submit .new-msg": function (event) {
+      typing.remove(typeId);
+      console.log(typeId);
       var text = event.target.text.value;
       var date = new Date;
       messeges.insert({
@@ -36,6 +56,8 @@ messeges=new Mongo.Collection("messeges");
       // Prevent default form submit
       return false;
      }
+
+   
     });
     
     Accounts.ui.config({
@@ -53,4 +75,7 @@ if (Meteor.isServer){
   return Meteor.users.find({});
   });
 
+  Meteor.publish ("typing", function(){
+    return typing.find();
+  })
 }

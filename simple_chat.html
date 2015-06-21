@@ -20,6 +20,9 @@
 
         <div class= "main">
           {{#if currentUser}}
+          {{#each nowtyping}}
+            {{>usertyping}}
+            {{/each}}
              <ul>
               {{#each msgs}}
               {{> chat}}
@@ -43,4 +46,8 @@
   <li>
       <span> {{username}}</span>
   </li>
+</template>
+
+<template name= "usertyping">
+   <span> {{name}} is typing.. </span> 
 </template>
