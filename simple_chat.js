@@ -1,5 +1,11 @@
 messeges=new Mongo.Collection("messeges");
 typing= new Mongo.Collection ("typing");  
+  
+   Meteor.startup(function () {
+      typing.remove({});
+    
+    });
+
  
   if (Meteor.isClient) {
     
@@ -21,7 +27,8 @@ typing= new Mongo.Collection ("typing");
     },
 
     nowtyping: function(){
-      return typing.find({});
+      currentUserName= Meteor.user().username;
+      return typing.find({ name: { $ne: currentUserName}});
     },
 
 
@@ -32,17 +39,17 @@ typing= new Mongo.Collection ("typing");
     Template.body.events({
        
      "focus .new-msg": function (event){
-      //boolean check if already exists
-      //remove from collection after submit 
         usertyping = Meteor.user().username;
         typeId= typing.insert ({name: usertyping});
       },
 
+     "blur .new-msg": function (event){
+        typing.remove(typeId);
+      },
 
 
      "submit .new-msg": function (event) {
       typing.remove(typeId);
-      console.log(typeId);
       var text = event.target.text.value;
       var date = new Date;
       messeges.insert({
