@@ -17,41 +17,46 @@
         <div class="header">SimpleChat</div>
         </div>
       
-      <div class= "left">
+      <span> <h3> chat users </h3> </span>
+      <div class= "col-sm-3 ">
         {{#each chatUsers}}
         {{>showUser}}
         {{/each}}
       </div>
 
-        <div class= "main">
+        <div class= " col-sm-6">
           <span>&nbsp;</span>
           {{#if currentUser}}
           {{#each nowtyping}}
             {{>usertyping}}
             {{/each}}
              
-             <ul class= "well">
+             <ul>
               {{#each msgs}}
               {{> chat}}
               {{/each}}
             </ul>
             
-            <form class="new-msg">
-                <input type="text" name="text" />
+            <form class="new-msg well">
+                <input type="text" name="text" placeholder= "  type your message here" />
             </form>
           {{/if}}
+        </div>
+
+       <div class= " col-sm-3 well">
+                  some textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome text
         </div>
 </body>
 
 <template name="chat">
   
-  <li>
+  <li class= "well well-sm">
     <span class="text"><strong>{{username}}</strong>- <small>{{formatDate createdAt}} </small> - {{text}}  </span>
   </li>
 </template>
 
 <template name= "showUser">
-  <li>
+  <li class= "well well-sm">
       <span> {{username}}</span>
   </li>
 </template>

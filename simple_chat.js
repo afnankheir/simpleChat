@@ -3,6 +3,7 @@ typing= new Mongo.Collection ("typing");
   
    Meteor.startup(function () {
       typing.remove({});
+      messeges.remove({});
     
     });
 
