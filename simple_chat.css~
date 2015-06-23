@@ -158,5 +158,8 @@ a#login-sign-in-link{
   font-size: 1.5em;
   float: right;
   padding-top: 0px
+<<<<<<< HEAD
 }
-
+=======
+}
+>>>>>>> 7869f3b2d2af7e8069a038690a776ccb8b690979

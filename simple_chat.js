@@ -48,8 +48,6 @@ Template.newRoom.helpers({
      "blur .new-msg": function (event){
         typing.remove(typeId);
       },
-
-
      "submit .new-msg": function (event) {
       typing.remove(typeId);
       var text = event.target.text.value;
@@ -64,11 +62,7 @@ Template.newRoom.helpers({
       event.target.text.value = "";
       // Prevent default form submit
       return false;
-     },
-
-      chatUsers: function (){
-        return Meteor.users.find({});
-      }
+     }
    
     });
     
