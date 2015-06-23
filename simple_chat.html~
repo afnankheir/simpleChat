@@ -61,5 +61,14 @@
    <span> {{name}} is typing.. </span>
 </template>
 
-
+<template name="rooms">
+  <ul>
+       {{#each rooms}}
+         <li class="room">
+		 <input name="room" type="hidden" value="{{_id}}"/>
+	         <span>{{roomName}}</span>
+         </li>
+       {{/each}}
+   </ul>
+</template>
 

@@ -31,11 +31,11 @@ typing= new Mongo.Collection ("typing");
     }
   });
 
-    emplate.newRoom.helpers({
-      chatUsers: function (){
-	   return Meteor.users.find({});
-	  }
-	}); 
+Template.newRoom.helpers({
+  chatUsers: function (){
+    return Meteor.users.find({});
+  }
+}); 
 
     Template.body.events({
        

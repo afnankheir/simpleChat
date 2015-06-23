@@ -17,10 +17,10 @@
 </template>
 <template name="rooms">
   <ul>
-        {{#each rooms}}
-         <li class="room">
-		 <input id="room" value="{{roomName}}" type="button"/>
-		 <input name="room_id" type="hidden" value="{{_id}}"/>
+       {{#each rooms}}
+         <li>
+                <input id="room" value="{{roomName}}" type="button"/>
+	 <input name="room_id" type="hidden" value="{{_id}}"/>
          </li>
        {{/each}}
    </ul>
