@@ -1,0 +1,16 @@
+<template name="newRoom">
+  <div class= "left">
+      <ul>
+        {{#each chatUsers}}
+        <!-- {{> room}} -->
+        <li>
+           <input name ="check_user" type="checkbox" checked="{{checked}}" class="toggle-checked" value="{{username}}" />
+           <span class="particepent">{{username}}</span>
+      </li>
+        {{/each}}
+      </ul>
+      <input id="roomName" type="text" name="text" />
+      <input id="submit" value="Submit Form" type="submit"/>
+     
+  </div>
+</template>

@@ -1,27 +1,57 @@
 <head>
+  <link href="http://fonts.googleapis.com/css?family=Allan:bold" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
   <title>simple_chat</title>
 </head>
 
 <body>
-    <div class="container">
-      {{> loginButtons}}
+     <div class= "top">
+        {{> loginButtons align="right"}}
+     
+        <div class="header">SimpleChat</div>
+        </div>
+     
+      <div class= "right">
+        <ul>
+          {{#each rooms}}
+          {{roomName}}
+          {{/each}}
+        </ul>
+      </div>
 
-    <ul>
-      {{#each msgs}}
-        {{> chat}}
-      {{/each}}
-    </ul>
-    {{#if currentUser}}
+      {{> newRoom}}
+
+
+        <div class= "main">
+          {{#if currentUser}}
+          {{#each nowtyping}}
+            {{>usertyping}}
+            {{/each}}
+             <ul>
+              {{#each msgs}}
+              {{> chat}}
+              {{/each}}
+            </ul>
             <form class="new-msg">
-    <input type="text" name="text" />
-  </form>
-  {{/if}}
-
-</div>
+                <input type="text" name="text" />
+            </form>
+          {{/if}}
+        </div>
 </body>
 
 <template name="chat">
+ 
   <li>
-    <span class="text"><strong>{{username}}</strong> - {{text}} - {{createdAt}} </span>
+    <span class="text"><strong>{{username}}</strong>- {{formatDate createdAt}} - {{text}}  </span>
   </li>
+</template>
+
+<template name= "showUser">
+  <li>
+      <span> {{username}}</span>
+  </li>
+</template>
+
+<template name= "usertyping">
+   <span> {{name}} is typing.. </span>
 </template>
