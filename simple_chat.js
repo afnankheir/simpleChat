@@ -22,7 +22,8 @@ typing= new Mongo.Collection ("typing");
     Template.body.helpers({
 
       msgs: function () {
-       return messeges.find( { roomId:Session.get('roomId')} );
+       roomID=Session.get('roomId');
+       return messeges.find({roomId:roomID});
         },
 
     nowtyping: function(){
@@ -31,7 +32,7 @@ typing= new Mongo.Collection ("typing");
     }
   });
 
-    emplate.newRoom.helpers({
+    Template.newRoom.helpers({
       chatUsers: function (){
 	   return Meteor.users.find({});
 	  }
