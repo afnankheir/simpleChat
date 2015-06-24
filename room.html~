@@ -1,27 +1,31 @@
 <template name="newRoom">
   <div class= "left">
-     <input id="roomName" type="text" name="text" />
-      <ul>
-        {{#each chatUsers}}
-        <!-- {{> room}} -->
-        <li>
-           <input name ="check_user" type="checkbox" checked="{{checked}}" class="toggle-checked" value="{{username}}" />
-           <span class="particepent">{{username}}</span>
-      </li>
-        {{/each}}
-      </ul>
+	     <input id="roomName" type="text" name="text" />
+	      <ul>
+		{{#each chatUsers}}
+		<!-- {{> room}} -->
+		<li>
+			<input name ="check_user" type="checkbox" checked="{{checked}}" class="toggle-checked" value="{{username}}" />
+			<span class="particepent">{{username}}</span>
+	      </li>
+		{{/each}}
+	      </ul>
 
-      <input id="submit" value="Submit Form" type="submit"/>
+	      <input id="submit" value="Submit Form" type="submit"/>
      
   </div>
 </template>
 <template name="rooms">
   <ul>
-       {{#each rooms}}
-         <li>
-                <input id="room" value="{{roomName}}" type="button"/>
-	 <input name="room_id" type="hidden" value="{{_id}}"/>
-         </li>
-       {{/each}}
-   </ul>
+        {{#each rooms}}
+		 <li>
+                      <form class="roomId">
+				 <input  value="{{roomName}}" type="submit"/>
+				 <input name="room_id" type="hidden" value="{{_id}}"/>
+                       </form>
+    
+		</li>
+	{{/each}}    
+  </ul>
+
 </template>

@@ -16,16 +16,16 @@
   </div>
 </template>
 <template name="rooms">
-  <ul>
-        {{#each rooms}}
-		 <li>
-                      <form class="roomId">
-				 <input  value="{{roomName}}" type="submit"/>
-				 <input name="room_id" type="hidden" value="{{_id}}"/>
-                       </form>
-    
-		</li>
-	{{/each}}    
-  </ul>
+	 <ul>
+		{{#each rooms}}
+			 <li>
+		              <form class="roomId">
+					 <input  value="{{roomName}}" type="submit"/>
+					 <input name="room_id" type="hidden" value="{{_id}}"/>
+		               </form>
+	    
+			</li>
+		{{/each}}    
+ 	</ul>
 
 </template>
