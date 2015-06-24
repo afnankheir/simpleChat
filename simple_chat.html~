@@ -18,13 +18,12 @@
      
       <div class= "right">
         {{> rooms}}
-              {{> newRoom}}
-
       </div>
 
+      {{> newRoom}}
 
 
-        <div class= " col-sm-6">
+        <div class= "main">
           {{#if currentUser}}
           {{#each nowtyping}}
             {{>usertyping}}
@@ -59,5 +58,17 @@
 </template>
 
 <template name= "usertyping">
-   <span class= "alert alert-info"> {{name}} is typing.. </span>
+   <span> {{name}} is typing.. </span>
 </template>
+
+<template name="rooms">
+  <ul>
+       {{#each rooms}}
+         <li class="room">
+		 <input name="room" type="hidden" value="{{_id}}"/>
+	         <span>{{roomName}}</span>
+         </li>
+       {{/each}}
+   </ul>
+</template>
+
