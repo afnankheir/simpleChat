@@ -18,12 +18,13 @@
      
       <div class= "right">
         {{> rooms}}
+              {{> newRoom}}
+
       </div>
 
-      {{> newRoom}}
 
 
-        <div class= "main">
+        <div class= " col-sm-6">
           {{#if currentUser}}
           {{#each nowtyping}}
             {{>usertyping}}
@@ -58,8 +59,5 @@
 </template>
 
 <template name= "usertyping">
-   <span> {{name}} is typing.. </span>
+   <span class= "alert alert-info"> {{name}} is typing.. </span>
 </template>
-
-
-
