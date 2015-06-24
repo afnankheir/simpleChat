@@ -4,18 +4,18 @@ typing= new Mongo.Collection ("typing");
    Meteor.startup(function () {
       typing.remove({});
       messeges.remove ({});
+      rooms.remove ({});
     
     });
 
  
   if (Meteor.isClient) {
-    
+
      Meteor.subscribe("userData");
      Meteor.subscribe("typing")
      Meteor.subscribe("messeges");
-     Meteor.subscribe("rooms")
-  // This code only runs on the client
-
+     Meteor.subscribe("rooms");
+     
     Template.registerHelper('formatDate', function(date) {
       return moment(date).fromNow();
       });
@@ -32,7 +32,7 @@ typing= new Mongo.Collection ("typing");
     }
   });
 
-    emplate.newRoom.helpers({
+    Template.newRoom.helpers({
       chatUsers: function (){
 	   return Meteor.users.find({});
 	  }
@@ -43,15 +43,15 @@ typing= new Mongo.Collection ("typing");
      "focus .new-msg": function (event){
         usertyping = Meteor.user().username;
         Meteor.call ("addTyping", usertyping, function(error, id){
-            typeId= id;
+           Session.set("typeId",id);
         });
       },
 
      "blur .new-msg": function (event){
-        Meteor.call("removeTyping", typeId);
+        Meteor.call("removeTyping", Session.get('typeId'));
       },
      "submit .new-msg": function (event) {
-        Meteor.call("removeTyping", typeId);
+        Meteor.call("removeTyping", Session.get ('typeId'));
       var message = event.target.text.value;
 
       Meteor.call("addMessage", message, function(error){
@@ -93,7 +93,7 @@ addTyping: function (name){
 removeTyping: function (id){
 
   typing.remove(id);
-}
+},
 
 
 });

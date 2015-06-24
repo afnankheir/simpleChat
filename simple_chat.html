@@ -1,11 +1,11 @@
 <head>
     <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <link href="http://fonts.googleapis.com/css?family=Allan:bold" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">-->
+  <link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
   <title>simple_chat</title>
 </head>
 
@@ -16,8 +16,8 @@
         <div class="header">SimpleChat</div>
         </div>
      
-      <div class= "right">
-        {{> rooms}}
+      <div class= "col-sm-3">
+        
               {{> newRoom}}
 
       </div>
@@ -39,10 +39,9 @@
             </form>
           {{/if}}
         </div>
-
-       <div class= " col-sm-3 well">
-                  some textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome text
-        </div>
+        <div class = "col-sm-3">
+        {{> rooms}}
+      </div>
 </body>
 
 <template name="chat">
