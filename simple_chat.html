@@ -16,18 +16,19 @@
         <div class="header">SimpleChat</div>
         </div>
      
-      <div class= "right">
+      <div class= "col-sm-3">
         <ul>
           {{#each rooms}}
           {{roomName}}
           {{/each}}
         </ul>
-      </div>
-
       {{> newRoom}}
 
+      </div>
 
-        <div class= "main">
+
+
+        <div class= " col-sm-6">
           {{#if currentUser}}
           {{#each nowtyping}}
             {{>usertyping}}
@@ -62,6 +63,6 @@
 </template>
 
 <template name= "usertyping">
-   <span> {{name}} is typing.. </span>
+   <span class= "alert alert-info"> {{name}} is typing.. </span>
 </template>
 

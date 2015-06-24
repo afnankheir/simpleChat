@@ -1,4 +1,4 @@
-/* CSS declarations go here */
+
 html {
   background-image: url('imagems.jpeg');
 }
@@ -135,16 +135,7 @@ header .hide-completed {
 .left {
     right:0; top:92px; bottom: 0;
     width: 178px;
-    background-color: purple;
-}
-.main {
-    position: absolute;
-    right:300px; top:92px; left:0; bottom:0;
-    width: 600px;
-    margin-left: 300px;
-    height: 100%;
-    background: gray;
-
+   
 }
 
 div.header {
@@ -159,4 +150,3 @@ a#login-sign-in-link{
   float: right;
   padding-top: 0px
 }
-

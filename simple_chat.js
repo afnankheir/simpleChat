@@ -3,6 +3,7 @@ typing= new Mongo.Collection ("typing");
   
    Meteor.startup(function () {
       typing.remove({});
+      messeges.remove ({});
     
     });
 
@@ -42,22 +43,22 @@ Template.newRoom.helpers({
        
      "focus .new-msg": function (event){
         usertyping = Meteor.user().username;
-        typeId= typing.insert ({name: usertyping});
+        Meteor.call ("addTyping", usertyping, function(error, id){
+            typeId= id;
+        });
       },
 
      "blur .new-msg": function (event){
-        typing.remove(typeId);
+        Meteor.call("removeTyping", typeId);
       },
      "submit .new-msg": function (event) {
-      typing.remove(typeId);
-      var text = event.target.text.value;
-      var date = new Date;
-      messeges.insert({
-      text: text,
-      createdAt: date,
-      owner: Meteor.userId(),           // _id of logged in user
-      username: Meteor.user().username  // username of logged in user
+        Meteor.call("removeTyping", typeId);
+      var message = event.target.text.value;
+
+      Meteor.call("addMessage", message, function(error){
+        if(error) console.log(error);
       });
+     
       // Clear form
       event.target.text.value = "";
       // Prevent default form submit
@@ -70,6 +71,32 @@ Template.newRoom.helpers({
       passwordSignupFields: "USERNAME_ONLY"
     });
 } // end of client 
+
+Meteor.methods({
+addMessage : function (text){
+   if (! Meteor.userId()) {
+throw new Meteor.Error("not-authorized");
+}
+  messeges.insert ({
+    text: text, 
+    createdAt: new Date(),
+    owner: Meteor.userId(),           // _id of logged in user
+    username: Meteor.user().username  // username of logged in user
+  });
+
+},
+addTyping: function (name){
+
+ return typing.insert ({name: name});
+
+}, 
+removeTyping: function (id){
+
+  typing.remove(id);
+}
+
+
+});
 
 if (Meteor.isServer){
   Meteor.publish("messeges",function(){
