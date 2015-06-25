@@ -1,0 +1,28 @@
+Template.registerHelper('formatDate', function(date) {
+      return moment(date).fromNow();
+      });
+
+    Template.body.helpers({
+
+	      msgs: function () {
+	       roomID=Session.get('roomId');
+	       return messeges.find({roomId:roomID});
+		},
+
+	    nowtyping: function(){
+	      currentUserName= Meteor.user().username;
+	      return typing.find({ name: { $ne: currentUserName}});
+	    }
+	  });
+
+    Template.newRoom.helpers({
+      chatUsers: function (){
+	   return Meteor.users.find({});
+	  }
+	}); 
+    
+    
+    Template.rooms.helpers({
+	  rooms: function(){
+		     return rooms.find({particepents: Meteor.user().username});
+		    }});
