@@ -6,12 +6,13 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <link href="http://fonts.googleapis.com/css?family=Allan:bold" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
+  <link src="/css/simpleChat.css" type="text/css">
   <title>simple_chat</title>
 </head>
 
 <body>
      <div class= "top">
-        {{> loginButtons align="right"}}
+        {{> loginButtons}}
      
         <div class="header">SimpleChat</div>
         </div>
@@ -23,11 +24,13 @@
       </div>
 
         <div class= " col-sm-6">
+         <!--{{showRoomName}}-->
           {{#if currentUser}}
           {{#each nowtyping}}
             {{>usertyping}}
             {{/each}}
              <ul>
+
               {{#each msgs}}
               {{> chat}}
               {{/each}}

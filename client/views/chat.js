@@ -1,5 +1,6 @@
 if(Meteor.isClient)
 {
+ particepents =[];
 Template.registerHelper('formatDate', function(date) {
       return moment(date).fromNow();
       });
@@ -67,7 +68,7 @@ Template.registerHelper('formatDate', function(date) {
 		var room = $('#roomName').val();
                 particepents.push(Meteor.user().username);
 		 console.log(room);
-     Meteor.call ('addRoom', room);
+     Meteor.call ('addRoom', room,particepents);
       },
    
    "click .toggle-checked": function (event) {
