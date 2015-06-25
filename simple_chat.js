@@ -1,14 +1,6 @@
 messeges=new Mongo.Collection("messeges");
 typing= new Mongo.Collection ("typing");  
   
-   Meteor.startup(function () {
-      typing.remove({});
-      messeges.remove ({});
-      rooms.remove ({});
-    
-    });
-
- 
   if (Meteor.isClient) {
 
      Meteor.subscribe("userData");
@@ -54,9 +46,10 @@ typing= new Mongo.Collection ("typing");
      "submit .new-msg": function (event) {
         Meteor.call("removeTyping", Session.get ('typeId'));
       var message = event.target.text.value;
-
-      Meteor.call("addMessage", message, function(error){
-        if(error) console.log(error);
+      getRoomId = Session.get('roomId');
+      Meteor.call("addMessage", message,getRoomId, function(error)
+      {
+        if(error) console.log("---------------- submit error ---------",error);
       });
      
       // Clear form
@@ -73,18 +66,17 @@ typing= new Mongo.Collection ("typing");
 } // end of client 
 
 Meteor.methods({
-addMessage : function (text){
-   if (! Meteor.userId()) {
-throw new Meteor.Error("not-authorized");
-}
+addMessage : function (message, roomId){
+//    if (! Meteor.userId()) {
+// throw new Meteor.Error("not-authorized");
+// }
   messeges.insert ({
-    text: text, 
+    text: message, 
     createdAt: new Date(),
     owner: Meteor.userId(),           // _id of logged in user
     username: Meteor.user().username ,   // username of logged in user
-     roomId:Session.get('roomId')
+    roomId: roomId
   });
-
 },
 addTyping: function (name){
 

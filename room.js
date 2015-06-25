@@ -1,38 +1,14 @@
 rooms= new Mongo.Collection("rooms");
+
 if(Meteor.isClient)
 {
 
 var particepents =[];
 
 Template.rooms.helpers({
-<<<<<<< HEAD
 	  rooms: function(){
-		     return rooms.find({particepents: Meteor.user().username});
-		    }
-	  /*roomCheck: function(){
-		       user=Meteor.user().username;
-		       Session.set('room_id',$('.room').val());
-                       particepantsIndex = rooms.find({Session.get('room_id')}).particepents;
-		       if( particepantsIndex.indexOf(user) == -1)
-	                  return false;
-			    
-			else
-			   return true;
-			}*/
-		  });
-
-=======
-  rooms: function(){
-    return rooms.find({});
-    }
-  });
->>>>>>> b6bd0f6017acadcc59c499f464960405c61f9a76
-
-// Template.rooms.events ({
-//   "click .publicChat": function (event) {
-// Session.set ('roomId', publicRoomId);
-// }
-// });
+		     return rooms.find({particepents: Meteor.user().username});}
+       });
 
 Template.newRoom.events({
    "click #submit": function (event, template) {
@@ -57,8 +33,7 @@ Template.newRoom.events({
 Template.rooms.events({
 	"submit .roomId": function (event){
 	      var roomId = event.target.room_id.value;
-	      Session.set('roomId',roomId);
-	      console.log("aaa");
+	      Session.set("roomId",roomId);
 	      return false;
 	     }
 
@@ -71,6 +46,8 @@ addRoom: function (name){
           createdby: Meteor.userId(),
           admin: Meteor.user().username,
           particepents:particepents
+
       });
+      console.log (particepents);
 
 }});
