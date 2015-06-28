@@ -1,5 +1,6 @@
-if (Meteor.isServer){
-  Meteor.publish("messeges",function(){
-  return messeges.find();
-  });
+if (Meteor.isServer)
+{
+  Meteor.publish("Messages",function(){
+  return Messages.find();
+});
 }

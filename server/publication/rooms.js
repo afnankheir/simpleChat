@@ -1,5 +1,6 @@
-if(Meteor.isServer){   
-Meteor.publish("rooms", function() {
-    return rooms.find({});
-   });
+if(Meteor.isServer)
+{   
+  Meteor.publish("Rooms", function() {
+  return Rooms.find({});
+  });
 }

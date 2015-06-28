@@ -1,6 +1,5 @@
 if( Meteor.isServer){
-Meteor.publish("userData", function () {
- 
+  Meteor.publish("UserData", function () {
   return Meteor.users.find({});
-  });
+});
 }

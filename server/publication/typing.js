@@ -1,6 +1,6 @@
   if(Meteor.isServer)
 {
-  Meteor.publish ("typing", function(){
-    return typing.find();
+  Meteor.publish ("Typing", function(){
+  return Typing.find();
   });
 }
