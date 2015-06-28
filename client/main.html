@@ -1,0 +1,48 @@
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link href="http://fonts.googleapis.com/css?family=Allan:bold" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
+  <link src="/css/simpleChat.css" type="text/css">
+  <title>simple_chat</title>
+</head>
+
+<body>
+     <div class= "top">
+        {{> loginButtons}}
+     
+        <div class="header">SimpleChat</div>
+        </div>
+     
+      <div class= "col-sm-3">
+        
+              {{> newRoom}}
+
+      </div>
+
+        <div class= " col-sm-6">
+           {{showRoomName}} 
+          {{#if currentUser}}
+          {{#each nowtyping}}
+            {{>usertyping}}
+            {{/each}}
+             <ul>
+
+              {{#each msgs}}
+              {{> chat}}
+              {{/each}}
+            </ul>
+            <form class="new-msg well">
+                <input type="text" name="text" placeholder= "  type your message here" />
+            </form>
+          {{/if}}
+        </div>
+        <div class = "col-sm-3">
+        {{> rooms}}
+      </div>
+</body>
+
+
