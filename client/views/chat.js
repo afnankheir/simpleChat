@@ -6,6 +6,7 @@ if(Meteor.isClient)
   return moment(date).fromNow();
   });
 
+<<<<<<< HEAD
 
   Template.body.helpers
   ({
@@ -30,33 +31,73 @@ if(Meteor.isClient)
   Template.newRoom.helpers
   ({
     chatusers: function ()
+=======
+  Template.body.helpers
+  ({
+	 
+     msgs: function () 
+    {
+	   roomID=Session.get('roomId');
+	   return Messages.find({roomId:roomID});
+    },
+	   nowTyping: function()
+    {
+	   currentUserName= Meteor.user().username;
+	   return Typing.find({ name: { $ne: currentUserName}});
+	   }
+	});
+
+  Template.newRoom.helpers
+  ({
+    chatUsers: function ()
+>>>>>>> c1890c13f280b91a94eff5150907ae4a6dcc5bcf
     {
 	   return Meteor.users.find({});
 	  }
 	}); 
   
+<<<<<<< HEAD
   Template.rooms.helpers
   ({
 	   rooms: function(){
 		  return rooms.find({particepents: Meteor.user().username});
+=======
+  Template.Rooms.helpers
+  ({
+	   Rooms: function(){
+		  return Rooms.find({particepents: Meteor.user().username});
+>>>>>>> c1890c13f280b91a94eff5150907ae4a6dcc5bcf
 	}});
   
   Template.body.events
   ({     
       "focus .new-msg": function (event)
       {
+<<<<<<< HEAD
         usertyping = Meteor.user().username;
         Meteor.call ("addtyping", usertyping, function(error, id){
+=======
+        userTyping = Meteor.user().username;
+        Meteor.call ("addTyping", userTyping, function(error, id){
+>>>>>>> c1890c13f280b91a94eff5150907ae4a6dcc5bcf
         Session.set("typeId",id);
         });
       },
     "blur .new-msg": function (event)
       {
+<<<<<<< HEAD
         Meteor.call("removetyping", Session.get('typeId'));
       },
     "submit .new-msg": function (event) 
       {
       Meteor.call("removetyping", Session.get ('typeId'));
+=======
+        Meteor.call("removeTyping", Session.get('typeId'));
+      },
+    "submit .new-msg": function (event) 
+      {
+      Meteor.call("removeTyping", Session.get ('typeId'));
+>>>>>>> c1890c13f280b91a94eff5150907ae4a6dcc5bcf
       var message = event.target.text.value;
       var getRoomId = Session.get('roomId');
       Meteor.call("addMessage", message,getRoomId, function(error)
@@ -94,6 +135,7 @@ if(Meteor.isClient)
     } 
     });
 
+<<<<<<< HEAD
 Template.rooms.events({
 	"submit .roomId": function (event){
 	      var roomId = event.target.room_id.value;
@@ -104,3 +146,16 @@ Template.rooms.events({
 	     }
 	   });
 }
+=======
+    Template.Rooms.events
+    ({
+	   "submit .roomId": function (event)
+      {
+	     var roomId = event.target.room_id.value;
+	     Session.set('roomId',roomId);
+	     console.log('roomId');
+	     return false;
+	     }
+	   });
+}
+>>>>>>> c1890c13f280b91a94eff5150907ae4a6dcc5bcf
