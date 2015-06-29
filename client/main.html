@@ -1,5 +1,5 @@
 <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -11,39 +11,34 @@
 </head>
 
 <body>
-     <div class= "top">
-        {{> loginButtons}}
-     
-        <div class="header">SimpleChat</div>
-        </div>
-     
-      <div class= "col-sm-3">
-        
-              {{> newRoom}}
-
-      </div>
-        <div class= " col-sm-6">
-           {{showRoomName}} 
-          {{#if currentUser}}
-           {{#each nowtyping}}
-              <span class= "alert alert-info"> {{name}} is typing.. </span>
-            {{/each}}
-             <ul>
-
-              {{#each msgs}}
+  <div class= "top">
+    {{> loginButtons}}
+    <div class="header">SimpleChat</div>
+  </div>
+  <div class= "col-sm-3">
+    {{> newRoom}}
+  </div>
+  <div class= " col-sm-6">
+    {{showRoomName}} 
+      {{#if currentUser}}
+      {{#each nowtyping}}
+        <span class= "alert alert-info"> {{name}} is typing.. </span>
+      {{/each}}
+         <ul>
+           {{#each msgs}}
               <li class= "well well-sm">
-                  <span class="text"><strong>{{username}}</strong>- <small>{{formatDate createdAt}} </small> - {{text}}  </span>
-                </li>
-              {{/each}}
-            </ul>
-            <form class="new-msg well">
-                <input type="text" name="text" placeholder= "  type your message here" />
-            </form>
-          {{/if}}
-        </div>
-        <div class = "col-sm-3">
-        {{> rooms}}
-      </div>
+                <span class="text"><strong>{{username}}</strong>- <small>{{formatDate createdAt}} </small> - {{text}}  </span>
+              </li>
+           {{/each}}
+         </ul>
+        <form class="new-msg well">
+          <input type="text" name="text" placeholder= "  type your message here" />
+        </form>
+      {{/if}}
+  </div>
+  <div class = "col-sm-3">
+    {> rooms}}
+  </div>
 </body>
 
 

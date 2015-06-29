@@ -1,15 +1,17 @@
 Template.registerHelper('formatDate', function(date) 
 {
-  return moment(date).fromNow();
+   return moment(date).fromNow();
 });
+
 Template.body.helpers({
-  msgs: function () {
-    roomID=Session.get('roomId');
-    return messeges.find({roomId:roomID});
-   },
+  msgs: function () 
+  {
+     roomID=Session.get('roomId');
+     return messeges.find({roomId:roomID});
+  },
       
   showRoomName : function () 
-  {
+  { 
     var roomId = Session.get('roomId');
     return rooms.findOne({_id: roomId}).roomName;
   },
@@ -22,29 +24,31 @@ Template.body.helpers({
   
 Template.body.events({     
   "focus .new-msg": function (event)
-  {
-   usertyping = Meteor.user().username;
-     Meteor.call ("addtyping", usertyping, function(error, id){
-     Session.set("typeId",id);
-     });
-   },
+   {
+      usertyping = Meteor.user().username;
+      Meteor.call ("addtyping", usertyping, function(error, id){
+            Session.set("typeId",id);
+          });
+    },
   "blur .new-msg": function (event)
   {
-    Meteor.call("removetyping", Session.get('typeId'));
+      Meteor.call("removetyping", Session.get('typeId'));
   },
   "submit .new-msg": function (event) 
   {
       Meteor.call("removetyping", Session.get ('typeId'));
       var message = event.target.text.value;
       var getRoomId = Session.get('roomId');
-      Meteor.call("addMessage", message,getRoomId, function(error)
-        {
-          if(error) console.log(error);
-        });
-        event.target.text.value = "";
+        Meteor.call("addMessage", message,getRoomId, function(error)
+          {
+            if(error) console.log(error);
+          });
+       
+       event.target.text.value = "";
         return false;
-  }
-  });   
-  Accounts.ui.config({
+         }
+    });
+    
+    Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
-  });
+    });

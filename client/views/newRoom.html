@@ -1,14 +1,14 @@
 <template name="newRoom">
-  <div>
-	     <input id="roomName" type="text" name="text" />
-	     <ul>
-		{{#each chatusers}}
-				<li>
-					<input name ="check_user" type="checkbox" checked="{{checked}}" class="toggle-checked" value="{{username}}" />
-					<span class="particepent">{{username}}</span>
-	      		</li>
-		{{/each}}
-	     </ul>
-	   	 <input id="submit" value="Submit Form" type="submit"/>
-  </div>
+	<div>
+	    <input id="roomName" type="text" name="text" />
+		<ul>
+			{{#each chatusers}}
+			   <li>
+				   <input name ="check_user" type="checkbox" checked="{{checked}}" class="toggle-checked" value="{{username}}" />
+				   <span class="particepent">{{username}}</span>
+		       </li>
+			{{/each}}
+		</ul>
+	    <input id="submit" value="Submit Form" type="submit"/>
+	</div>
 </template>

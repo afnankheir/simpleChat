@@ -1,5 +1,6 @@
 
-  Meteor.publish ("typing", function(){
-    return typing.find();
-});
+  Meteor.publish ("typing", function()
+  {
+  	return typing.find();
+  });
 

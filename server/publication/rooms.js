@@ -1,5 +1,5 @@
 
 Meteor.publish("rooms", function() {
-    return rooms.find({});
-   });
+	return rooms.find({});
+});
 

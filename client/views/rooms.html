@@ -1,14 +1,13 @@
-
 <template name="rooms">
-	 <ul>
+	<ul>
 	    {{#each rooms}}
-	            <li>
-		         <form class="roomId">
+	        <li>
+		        <form class="roomId">
 				     <input  value="{{roomName}}" type="submit"/>
 				     <input name="room_id" type = "hidden" value="{{_id}}"/>
-		         </form>
+		        </form>
 	  
-		 </li>
+		     </li>
 		{{/each}}    
  	</ul>
 </template>
